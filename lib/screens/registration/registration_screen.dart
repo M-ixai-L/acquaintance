@@ -1,7 +1,7 @@
 import 'package:acquaintance/screens/home/home_screen.dart';
 import 'package:acquaintance/utils/navigation/navigation.dart';
 import 'package:acquaintance/utils/navigation/project_router.dart';
-import 'package:acquaintance/utils/save/save_choice.dart';
+import 'package:acquaintance/utils/save/classes/save_choice.dart';
 import 'package:acquaintance/utils/values/colors.dart';
 import 'package:acquaintance/utils/values/lists.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +32,7 @@ class _RegistrationScreenState extends State<RegistrationScreen>
 
   @override
   Widget build(BuildContext context) {
+    likedList.clear();
     return Scaffold(
       backgroundColor: accentColor,
       body: Center(
@@ -59,11 +60,12 @@ class _RegistrationScreenState extends State<RegistrationScreen>
             TextButton(
               onPressed: () {
                 Choice? choice = Choice(
-                  indexNat: getIndex(),
+                  indexNat: getIndex()!,
                   gender: genderValue,
                 );
                 Navigation.toScreen(
-                    Routes.home,
+                  Routes.home,
+                  arguments: choice,
                 );
               },
               child: Container(

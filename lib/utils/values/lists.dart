@@ -1,3 +1,5 @@
+import 'package:acquaintance/utils/save/classes/human.dart';
+
 const nationalitiesList = [
   'Australia',
   'Brazil',
@@ -17,3 +19,4 @@ const nationalitiesList = [
   'Turkey',
   'USA',
 ];
+List<Human> likedList = [];

@@ -1,10 +1,13 @@
+import 'package:acquaintance/screens/favorite/favorite_screen.dart';
 import 'package:acquaintance/screens/home/home_screen.dart';
 import 'package:acquaintance/screens/registration/registration_screen.dart';
+import 'package:acquaintance/utils/save/classes/save_choice.dart';
 import 'package:flutter/material.dart';
 
 
 const  _registration = '/registration';
 const  _home = '/home';
+const  _favorite = '/favorite';
 
 class ProjectRouter {
   static final RouteObserver<PageRoute> routeObserver =
@@ -15,7 +18,10 @@ class ProjectRouter {
       case _registration:
         return _buildRoute(settings, RegistrationScreen());
       case _home:
-        return _buildRoute(settings,HomeScreen());
+        var choise = settings.arguments as Choice?;
+        return MaterialPageRoute(settings: settings, builder: (_) => HomeScreen(choice: choise,));
+      case _favorite:
+        return MaterialPageRoute(settings: settings, builder: (_) => FavoriteScreen());
 
     }
     return null;
@@ -29,6 +35,7 @@ class ProjectRouter {
 enum Routes {
   registration,
   home,
+  favorite,
 }
 
 extension RoutNames on Routes {
@@ -38,7 +45,8 @@ extension RoutNames on Routes {
         return _registration;
       case Routes.home:
         return _home;
-
+      case Routes.favorite:
+        return _favorite;
     }
   }
 }

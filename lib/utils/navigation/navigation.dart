@@ -1,5 +1,4 @@
 import 'package:acquaintance/utils/navigation/project_router.dart';
-import 'package:acquaintance/utils/save/save_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -8,7 +7,7 @@ class Navigation {
 
   static dynamic toScreen(
       Routes route, {
-        Choice? arguments,
+        Object? arguments,
       }) async {
      return await navigatorKey.currentState!.pushNamed(
        route.path,
